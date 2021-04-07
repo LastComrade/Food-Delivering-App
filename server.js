@@ -3,6 +3,15 @@ const app = express()
 const ejs = require('ejs')
 const path = require('path')
 const expressLayout = require('express-ejs-layouts')
+const favicon = require('serve-favicon');
+
+
+
+// Assets
+app.use(express.static('public'))
+app.use(favicon(path.join(__dirname,'public','favicon.ico')))
+
+
 
 app.get('/', (req, res) => {
     res.render('home')

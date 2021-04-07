@@ -1,0 +1,17 @@
+body {
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #232323;
+}
+
+nav li:last-child a {
+  background-color: #fe5f1e;
+}
+
+nav li:last-child a:hover {
+  background-color: #b23301;
+}
+
+nav li a:hover {
+  color: #fe5f1e;
+}
