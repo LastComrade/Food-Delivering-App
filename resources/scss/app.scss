@@ -4,7 +4,6 @@ body {
     font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
     color: $dark;
-    height: 4000px;
 }
 
 nav li:last-child a {
@@ -43,5 +42,37 @@ section.hero {
         background: $primary;
         border-color: $pure;
         color: $pure;
+    }
+}
+
+.btn-primary {
+    transition: $smooth;
+    background: $primary; 
+    &:hover {
+        background: $primary-hover;
+    }
+}
+
+section.empty-cart {
+    background-color: $secondary;
+    .amount {
+        color: $primary; 
+    }
+}
+
+section.login {
+    background-color: $secondary;
+    min-height: calc(100vh - 86px);
+    
+    .py-12 {
+        padding-top: 0rem;
+        padding-bottom: 10rem;
+    }
+
+    a {
+        color: $primary;
+        &:hover {
+            color: $primary-hover;
+        }
     }
 }
