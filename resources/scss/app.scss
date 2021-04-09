@@ -1,7 +1,9 @@
-@import './var';
+@import "./var";
+@import '../../node_modules/noty/src/noty.scss';
+@import '../../node_modules/noty/src/themes/mint.scss';
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     -webkit-font-smoothing: antialiased;
     color: $dark;
 }
@@ -43,11 +45,14 @@ section.hero {
         border-color: $pure;
         color: $pure;
     }
+    &:focus {
+        outline: none;
+    }
 }
 
 .btn-primary {
     transition: $smooth;
-    background: $primary; 
+    background: $primary;
     &:hover {
         background: $primary-hover;
     }
@@ -56,14 +61,14 @@ section.hero {
 section.empty-cart {
     background-color: $secondary;
     .amount {
-        color: $primary; 
+        color: $primary;
     }
 }
 
 section.login {
     background-color: $secondary;
     min-height: calc(100vh - 86px);
-    
+
     .py-12 {
         padding-top: 0rem;
         padding-bottom: 10rem;
@@ -75,4 +80,9 @@ section.login {
             color: $primary-hover;
         }
     }
+}
+
+.noty_theme__mint {
+    border-radius: 50px !important;
+    padding-left: 8px !important;
 }
