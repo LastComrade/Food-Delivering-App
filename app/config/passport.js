@@ -15,12 +15,10 @@ const init = (passport) => {
                         message: "No user exists with this email",
                     });
                 }
-                console.log(user);
 
                 bcrypt
                     .compare(password, user.password)
                     .then((match) => {
-                        console.log(match);
                         if (match) {
                             return done(null, user, {
                                 message: "Logged in successfully",

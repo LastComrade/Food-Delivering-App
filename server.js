@@ -1,4 +1,4 @@
-require("dotenv").config();
+ require("dotenv").config();
 const express = require("express");
 const app = express();
 const ejs = require("ejs");
@@ -18,7 +18,7 @@ mongoose.connect(url, {
     useUnifiedTopology: true,
     useFindAndModify: true,
     useCreateIndex: true,
-});
+}); 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
