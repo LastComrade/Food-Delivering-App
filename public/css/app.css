@@ -1,10 +1,11 @@
-.noty_layout_mixin, #noty_layout__top, #noty_layout__topLeft, #noty_layout__topCenter, #noty_layout__topRight, #noty_layout__bottom, #noty_layout__bottomLeft, #noty_layout__bottomCenter, #noty_layout__bottomRight, #noty_layout__center, #noty_layout__centerLeft, #noty_layout__centerRight {
+.noty_layout_mixin, #noty_layout__centerRight, #noty_layout__centerLeft, #noty_layout__center, #noty_layout__bottomRight, #noty_layout__bottomCenter, #noty_layout__bottomLeft, #noty_layout__bottom, #noty_layout__topRight, #noty_layout__topCenter, #noty_layout__topLeft, #noty_layout__top {
   position: fixed;
   margin: 0;
   padding: 0;
   z-index: 9999999;
   transform: translateZ(0) scale(1, 1);
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
   filter: blur(0);
   -webkit-filter: blur(0);
@@ -108,17 +109,22 @@
 .noty_effects_open {
   opacity: 0;
   transform: translate(50%);
-  animation: noty_anim_in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  animation-fill-mode: forwards;
+  -webkit-animation: noty_anim_in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          animation: noty_anim_in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 .noty_effects_close {
-  animation: noty_anim_out 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  animation-fill-mode: forwards;
+  -webkit-animation: noty_anim_out 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          animation: noty_anim_out 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 .noty_fix_effects_height {
-  animation: noty_anim_height 75ms ease-out;
+  -webkit-animation: noty_anim_height 75ms ease-out;
+          animation: noty_anim_height 75ms ease-out;
 }
 
 .noty_close_with_click {
@@ -137,7 +143,7 @@
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 2px;
   cursor: pointer;
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 .noty_close_button:hover {
@@ -150,65 +156,89 @@
   height: 100%;
   background-color: #000;
   z-index: 10000;
-  opacity: .3;
+  opacity: 0.3;
   left: 0;
   top: 0;
 }
 
 .noty_modal.noty_modal_open {
   opacity: 0;
-  animation: noty_modal_in .3s ease-out;
+  -webkit-animation: noty_modal_in 0.3s ease-out;
+          animation: noty_modal_in 0.3s ease-out;
 }
 
 .noty_modal.noty_modal_close {
-  animation: noty_modal_out .3s ease-out;
-  animation-fill-mode: forwards;
+  -webkit-animation: noty_modal_out 0.3s ease-out;
+          animation: noty_modal_out 0.3s ease-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes noty_modal_in {
+  100% {
+    opacity: 0.3;
+  }
 }
 
 @keyframes noty_modal_in {
   100% {
-    opacity: .3;
+    opacity: 0.3;
   }
 }
-
+@-webkit-keyframes noty_modal_out {
+  100% {
+    opacity: 0;
+  }
+}
 @keyframes noty_modal_out {
   100% {
     opacity: 0;
   }
 }
-
+@-webkit-keyframes noty_anim_in {
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
 @keyframes noty_anim_in {
   100% {
     transform: translate(0);
     opacity: 1;
   }
 }
-
+@-webkit-keyframes noty_anim_out {
+  100% {
+    transform: translate(50%);
+    opacity: 0;
+  }
+}
 @keyframes noty_anim_out {
   100% {
     transform: translate(50%);
     opacity: 0;
   }
 }
-
+@-webkit-keyframes noty_anim_height {
+  100% {
+    height: 0;
+  }
+}
 @keyframes noty_anim_height {
   100% {
     height: 0;
   }
 }
-
 .noty_theme__mint.noty_bar {
   margin: 4px 0;
   overflow: hidden;
   border-radius: 2px;
   position: relative;
 }
-
 .noty_theme__mint.noty_bar .noty_body {
   padding: 10px;
   font-size: 14px;
 }
-
 .noty_theme__mint.noty_bar .noty_buttons {
   padding: 10px;
 }
@@ -254,7 +284,6 @@ body {
 nav li:last-child a {
   background-color: red;
 }
-
 nav li:last-child a:hover {
   background-color: #b23301;
 }
@@ -262,7 +291,6 @@ nav li:last-child a:hover {
 nav li a {
   transition: all 0.3s ease;
 }
-
 nav li a:hover {
   color: #fe5f1e;
 }
@@ -276,7 +304,6 @@ section.hero {
     max-width: 1100px;
   }
 }
-
 .size {
   background: #f8f8f8;
 }
@@ -286,13 +313,11 @@ section.hero {
   color: #fe5f1e;
   transition: all 0.3s ease;
 }
-
 .add-to-cart:hover {
   background: #fe5f1e;
   border-color: #fff;
   color: #fff;
 }
-
 .add-to-cart:focus {
   outline: none;
 }
@@ -301,7 +326,6 @@ section.hero {
   transition: all 0.3s ease;
   background: #fe5f1e;
 }
-
 .btn-primary:hover {
   background: #b23301;
 }
@@ -309,7 +333,6 @@ section.hero {
 section.empty-cart {
   background-color: #f8f8f8;
 }
-
 section.empty-cart .amount {
   color: #fe5f1e;
 }
@@ -318,16 +341,13 @@ section.login {
   background-color: #f8f8f8;
   min-height: calc(100vh - 86px);
 }
-
 section.login .py-12 {
   padding-top: 0rem;
   padding-bottom: 10rem;
 }
-
 section.login a {
   color: #fe5f1e;
 }
-
 section.login a:hover {
   color: #b23301;
 }
@@ -335,4 +355,18 @@ section.login a:hover {
 .noty_theme__mint {
   border-radius: 50px !important;
   padding-left: 8px !important;
+}
+
+::-moz-selection {
+  background-color: black;
+  color: white;
+}
+
+::selection {
+  background-color: black;
+  color: white;
+}
+
+a.link {
+  color: #fe5f1e;
 }
