@@ -1,6 +1,7 @@
 import axios from "axios";
 import Noty from "noty";
 import { initAdmin } from "./admin";
+import moment from "moment";
 
 const addToCart = document.querySelectorAll(".add-to-cart");
 const cartCounter = document.querySelector("#cart-counter");
@@ -45,3 +46,38 @@ if (alertMessage) {
 }
 
 initAdmin();
+
+// Render order status
+const statuses = document.querySelectorAll(".status_line");
+const hiddenInput = document.querySelector("#hiddenInput");
+let order = hiddenInput ? hiddenInput.value : null;
+order = JSON.parse(order);
+let time = document.createElement("small");
+
+function updateStatus(order) {
+    let stepCompleted = true;
+    statuses.forEach((status) => {
+        let dataProp = status.dataset.status;
+        if (stepCompleted) {
+            status.classList.add("step-completed");
+        }
+        if (dataProp === order.status) {
+            stepCompleted = false;
+            time.innerText = moment(order.updatedAt).format("hh:mm A");
+            status.appendChild(time);
+            if (status.nextElementSibling) {
+                status.nextElementSibling.classList.add("current");
+            }
+        }
+    });
+}
+
+updateStatus(order);
+
+// Socket
+let socket = io();
+
+// Join
+if (order) {
+    socket.emit("join", `order_${order._id}`);
+}

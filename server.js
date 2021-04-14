@@ -18,7 +18,7 @@ mongoose.connect(url, {
     useUnifiedTopology: true,
     useFindAndModify: true,
     useCreateIndex: true,
-}); 
+});
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
@@ -43,10 +43,10 @@ app.use(
 );
 
 // Configuration for passport
-const passportInit = require('./app/config/passport')
-passportInit(passport)
-app.use(passport.initialize())
-app.use(passport.session())
+const passportInit = require("./app/config/passport");
+passportInit(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Flash middleware
 app.use(flash());
@@ -73,4 +73,17 @@ app.set("view engine", "ejs");
 require("./routes/web")(app);
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Server is listening on port ${port}`));
+const server = app.listen(port, () =>
+    console.log(`Server is listening on port ${port}`)
+);
+
+// Socket
+const io = require("socket.io")(server);
+io.on("connection", (socket) => {
+    // Join
+    // console.log(socket.id);
+    socket.on("join", (orderId) => {
+        console.log(orderId);
+        socket.join(orderId);
+    });
+});
