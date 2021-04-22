@@ -26,12 +26,6 @@ section.hero {
     background: $secondary;
 }
 
-@media (min-width: 1280px) {
-    .container {
-        max-width: 1100px;
-    }
-}
-
 .size {
     background: $secondary;
 }
@@ -155,14 +149,13 @@ section.status {
     content: "\f5b8";
 }
 
-
 .status-box ul li {
     position: relative;
 }
 
 // Line
 .status-box ul li:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -6px;
@@ -187,7 +180,7 @@ section.status {
     background-color: $gray;
 }
 
-// Text 
+// Text
 .status-box ul li.step-completed span {
     color: $gray;
 }
@@ -205,4 +198,28 @@ section.status {
     float: right;
     font-size: 14px;
     margin-top: 8px;
+}
+
+@media (max-width: 1300px) {
+    .container {
+        max-width: 90%;
+    }
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .status-box ul li span:before {
+        font-size: 34px;
+    }
+}
+
+.home-button-404 {
+    background-color: $primary;
+    &:focus {
+        outline: none;
+    }
 }

@@ -5,7 +5,7 @@
   "author": "Konark Lohat\t",
   "license": "MIT",
   "scripts": {
-    "serve": "node server.js",
+    "start": "node server.js",
     "dev": "nodemon server.js"
   },
   "dependencies": {

@@ -13,7 +13,7 @@ const passport = require("passport");
 const Emitter = require("events");
 
 // Database Connections
-const url = "mongodb://localhost/pizza";
+const url = process.env.DB_URL;
 mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -76,6 +76,9 @@ app.set("view engine", "ejs");
 
 // webRoutes(app);
 require("./routes/web")(app);
+app.use((req, res) => {
+    res.status(404).render('errors/404')
+})
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () =>

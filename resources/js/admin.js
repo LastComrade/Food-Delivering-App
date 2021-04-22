@@ -34,6 +34,7 @@ export function initAdmin(socket) {
             .join("");
     }
 
+    
     function generateMarkup(orders) {
         return orders
             .map((order) => {

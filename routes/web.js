@@ -11,7 +11,7 @@ const orderController = require("../app/http/controllers/customers/orderControll
 const adminOrderController = require("../app/http/controllers/admin/orderController");
 const statusController = require("../app/http/controllers/admin/statusController");
 
-// MiddleWares 
+// MiddleWares
 const guest = require("../app/http/middlewares/guest");
 const auth = require("../app/http/middlewares/auth");
 const admin = require("../app/http/middlewares/admin");
@@ -22,7 +22,7 @@ module.exports = initRoutes = (app) => {
 
     // Cart Routes
     app.get("/cart", cartController().index);
-    
+
     // Login Routes
     app.get("/login", guest, authController().login);
     app.post("/login", authController().postLogin);
