@@ -16,7 +16,7 @@
     <div class="grid grid-cols-4 col-gap-12 row-gap-16">
         <% pizzas.forEach((pizza) => { %> 
         <div class="w-64">
-            <img class="h-40 mb-4 mx-auto" src="/images/pizza.png" alt="">
+            <img class="h-40 mb-4 mx-auto this-here" src="/images/<%= pizza.image %>" alt="">
             <div class="text-center">
                 <h2 class="mb-4 text-lg "><%= pizza.name %></h2>
                 <span class="size py-1 px-4 rounded-full uppercase text-sm"><%= pizza.size %></span>

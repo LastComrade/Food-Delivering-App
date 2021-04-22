@@ -1,7 +1,8 @@
 import axios from "axios";
 import moment from "moment";
+import Noty from "noty";
 
-export function initAdmin() {
+export function initAdmin(socket) {
     const orderTableBody = document.querySelector("#orderTableBody");
     let orders = [];
 
@@ -48,42 +49,36 @@ export function initAdmin() {
                 <td class="border px-4 py-2">
                     <div class="inline-block relative w-64">
                         <form action="/admin/orders/status" method="POST">
-                            <input type="hidden" name="orderId" value="${
-                                order._id
-                            }">
+                            <input type="hidden" name="orderId" value="${order._id
+                    }">
                             <select name="status" onchange="this.form.submit()"
                                 class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                                 <option value="order_placed"
-                                    ${
-                                        order.status === "order_placed"
-                                            ? "selected"
-                                            : ""
-                                    }>
+                                    ${order.status === "order_placed"
+                        ? "selected"
+                        : ""
+                    }>
                                     Placed</option>
-                                <option value="confirmed" ${
-                                    order.status === "confirmed"
-                                        ? "selected"
-                                        : ""
-                                }>
+                                <option value="confirmed" ${order.status === "confirmed"
+                        ? "selected"
+                        : ""
+                    }>
                                     Confirmed</option>
-                                <option value="prepared" ${
-                                    order.status === "prepared"
-                                        ? "selected"
-                                        : ""
-                                }>
+                                <option value="prepared" ${order.status === "prepared"
+                        ? "selected"
+                        : ""
+                    }>
                                     Prepared</option>
-                                <option value="delivered" ${
-                                    order.status === "delivered"
-                                        ? "selected"
-                                        : ""
-                                }>
+                                <option value="delivered" ${order.status === "delivered"
+                        ? "selected"
+                        : ""
+                    }>
                                     Delivered
                                 </option>
-                                <option value="completed" ${
-                                    order.status === "completed"
-                                        ? "selected"
-                                        : ""
-                                }>
+                                <option value="completed" ${order.status === "completed"
+                        ? "selected"
+                        : ""
+                    }>
                                     Completed
                                 </option>
                             </select>
@@ -109,4 +104,15 @@ export function initAdmin() {
             })
             .join("");
     }
+    socket.on("orderPlaced", (order) => {
+        new Noty({
+            type: "success",
+            timeout: 1000,
+            text: "New Order!",
+            layout: "topLeft",
+        }).show();
+        orders.unshift(order);
+        orderTableBody.innerHTML = "";
+        orderTableBody.innerHTML = generateMarkup(orders);
+    });
 }
